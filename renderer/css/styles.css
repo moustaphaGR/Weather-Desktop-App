@@ -1,0 +1,63 @@
+body {
+  overflow: hidden;
+}
+
+.container-fluid {
+  min-height: 100vh !important;
+  background-image: url(../img/grenoble.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.searchbar {
+  background-color: rgba(35, 117, 189, 80%);
+  height: 50px;
+}
+
+.searchCity {
+  background-color: rgba(206, 232, 255, 80%);
+}
+
+.searchbar .form-control {
+  padding-right: 40px;
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-image: url(../img/icons8-search-34.png);
+  background-size: contain;
+}
+
+.title {
+  font-weight: bolder;
+}
+
+.time {
+  opacity: 75%;
+}
+
+.mapButton {
+  width: 15%;
+  margin-top: 20%;
+  background-color: rgba(98, 181, 96, 100%);
+  color: white;
+  font-size: larger;
+  font-weight: bolder;
+  border: 0px;
+  border-radius: 30px;
+}
+
+.weatherForecast {
+  color: white;
+  background-color: rgba(35, 117, 189, 80%);
+}
+
+.weatherForecast .vline {
+  border-right: 2px solid black;
+}
+
+.weatherForecast .vline:last-child {
+  border-right: none;
+}
+
+.currentWeather {
+  border-right: 2px solid black;
+}
