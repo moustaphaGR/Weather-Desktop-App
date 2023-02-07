@@ -12,53 +12,148 @@
     <title>Weather App</title>
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="row searchbar align-items-center">
-        <div class="col text-white">Prévision</div>
-        <div class="col-4">
-          <input
-            class="form-control searchCity"
-            type="search"
-            placeholder="Rechercher une ville"
-          />
-        </div>
-      </div>
-
+    <div
+      class="container-fluid d-flex flex-column justify-content-between"
+      style="height: 100vh"
+    >
+      <!-- Search Bar -->
       <div class="row">
-        <h1 class="text-end pe-5 title">Grenoble</h1>
-        <h3 class="text-end pe-3 time">6:25pm</h3>
-      </div>
-
-      <div class="row justify-content-end">
-        <button type="button" class="mapButton d-flex align-items-center">
-          <span class="me-3">Voir la Carte</span>
-          <img
-            src="./img/icons8-google-maps-old-35.png"
-            alt="map"
-            style="width: 34px; height: 30px"
-            class="ml-2"
-          />
-        </button>
-      </div>
-
-      <div class="row weatherForecast">
-        <div class="col-3 currentWeather p-5 d-flex">
-          <div class="col">
-            <div class="row currentWeatherTemp">7°</div>
-            <div class="row today">Aujourd'hui</div>
-          </div>
-          <div class="col">
-            <div class="row"><img src="" alt="current weather" /></div>
-            <div class="row wind">3km/h</div>
+        <div class="col offset-xxl-6 offset-md-6 p-2">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              placeholder="Rechercher une ville"
+              id="city-search-input"
+            />
+            <span class="input-group-text text-bg-dark"
+              ><button class="btn" id="search-button">
+                <img
+                  src="./img/icons8-search-34.png"
+                  alt="search icon"
+                /></button
+            ></span>
           </div>
         </div>
-        <div class="col vline">test</div>
-        <div class="col vline">test</div>
-        <div class="col vline">test</div>
-        <div class="col vline">test</div>
-        <div class="col vline">test</div>
+      </div>
+
+      <!-- City name and current time -->
+      <div class="row">
+        <div class="col offset-7 offset-md-6" id="city-name">
+          <!-- <h1 class="fw-bolder">Grenoble</h1> -->
+        </div>
+        <div class="col offset-8 offset-md-7" id="time">
+          <!-- <h3>6:25pm</h3> -->
+        </div>
+      </div>
+
+      <!-- Map button to redirect to map window/page -->
+      <div class="row btnMap">
+        <div class="col offset-md-10">
+          <button
+            class="btn btn-success full-width-btn border border-success rounded-start-pill"
+          >
+            <span class="fw-bolder">Voir la Carte</span>
+            <span
+              ><img src="./img/icons8-google-maps-old-35.png" alt="map icon"
+            /></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 5-day weather forecast -->
+      <div class="row weatherForecast">
+        <!-- Today's weather -->
+        <div class="col-lg-3 col-md-4 col-sm-6 currentWeather">
+          <div class="row align-items-center">
+            <div class="col currentWeatherTemp text-center">7°</div>
+            <div class="col">
+              <img
+                src="./img/Weather Icon.png"
+                alt="weather icon"
+                style="width: 100px"
+                class="mx-auto d-block"
+              />
+            </div>
+          </div>
+          <div class="row align-items-center p-0">
+            <div class="col text-center">
+              <span class="today-background rounded-pill">Aujourd'hui</span>
+            </div>
+
+            <div class="col text-center">3 km/h</div>
+          </div>
+        </div>
+        <!-- Next day's weather -->
+        <div
+          class="col-lg col-md-4 col-sm-6 d-flex flex-column align-items-center p-3 vline"
+        >
+          <span class="day-background rounded-pill">sam.</span>
+          <span
+            ><img
+              src="./img/Cloudy Weather Icon.png"
+              style="width: 100px"
+              alt="cloudy icon"
+          /></span>
+          <span class="temp">12°</span>
+        </div>
+        <!-- Next day's weather -->
+        <div
+          class="col-lg col-md-4 col-sm-6 d-flex flex-column align-items-center p-3 vline"
+        >
+          <span class="day-background rounded-pill">sam.</span>
+          <span
+            ><img
+              src="./img/Cloudy Weather Icon.png"
+              style="width: 100px"
+              alt="cloudy icon"
+          /></span>
+          <span class="temp">12°</span>
+        </div>
+        <!-- Next day's weather -->
+        <div
+          class="col-lg col-md-4 col-sm-6 d-flex flex-column align-items-center p-3 vline"
+        >
+          <span class="day-background rounded-pill">sam.</span>
+          <span
+            ><img
+              src="./img/Cloudy Weather Icon.png"
+              style="width: 100px"
+              alt="cloudy icon"
+          /></span>
+          <span class="temp">12°</span>
+        </div>
+        <!-- Next day's weather -->
+        <div
+          class="col-lg col-md-4 col-sm-6 d-flex flex-column align-items-center p-3 vline"
+        >
+          <span class="day-background rounded-pill">sam.</span>
+          <span
+            ><img
+              src="./img/Cloudy Weather Icon.png"
+              style="width: 100px"
+              alt="cloudy icon"
+          /></span>
+          <span class="temp">12°</span>
+        </div>
+        <!-- Next day's weather -->
+        <div
+          class="col-lg col-md-4 col-sm-6 d-flex flex-column align-items-center p-3 vline"
+        >
+          <span class="day-background rounded-pill">sam.</span>
+          <span
+            ><img
+              src="./img/Cloudy Weather Icon.png"
+              style="width: 100px"
+              alt="cloudy icon"
+          /></span>
+          <span class="temp">12°</span>
+        </div>
       </div>
     </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"

@@ -1,48 +1,25 @@
 body {
-  overflow: hidden;
-}
-
-.container-fluid {
-  min-height: 100vh !important;
+  overflow-x: hidden;
+  min-height: 100vh;
   background-image: url(../img/grenoble.jpg);
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
-.searchbar {
-  background-color: rgba(35, 117, 189, 80%);
-  height: 50px;
-}
-
-.searchCity {
-  background-color: rgba(206, 232, 255, 80%);
-}
-
-.searchbar .form-control {
-  padding-right: 40px;
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-image: url(../img/icons8-search-34.png);
-  background-size: contain;
-}
-
-.title {
-  font-weight: bolder;
-}
-
-.time {
-  opacity: 75%;
-}
-
-.mapButton {
-  width: 15%;
+.btnMap {
   margin-top: 20%;
-  background-color: rgba(98, 181, 96, 100%);
-  color: white;
-  font-size: larger;
-  font-weight: bolder;
-  border: 0px;
-  border-radius: 30px;
+  padding: 0;
+}
+
+.full-width-btn {
+  width: 100%;
+  margin-left: 5%;
+  padding: 0;
+}
+
+.weatherForecast {
+  background-color: rgba(35, 117, 189, 85%);
 }
 
 .weatherForecast {
@@ -60,4 +37,29 @@ body {
 
 .currentWeather {
   border-right: 2px solid black;
+}
+
+.currentWeatherTemp {
+  font-weight: bolder;
+  font-size: 128px;
+}
+
+.today-background {
+  background-color: rgba(87, 177, 255, 100%);
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+}
+
+.day-background {
+  background-color: rgba(87, 177, 255, 100%);
+  padding: 5px;
+  text-align: center;
+  display: inline-block;
+  font-size: 24px;
+}
+
+.temp {
+  font-size: 64px;
+  font-weight: 500;
 }
