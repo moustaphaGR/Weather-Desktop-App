@@ -68,13 +68,16 @@
         <!-- Today's weather -->
         <div class="col-lg-3 col-md-4 col-sm-6 currentWeather">
           <div class="row align-items-center">
-            <div class="col currentWeatherTemp text-center">7°</div>
+            <div class="col currentWeatherTemp text-center" id="todayTemp">
+              <!-- 7° -->
+            </div>
             <div class="col">
               <img
-                src="./img/Weather Icon.png"
+                src=""
                 alt="weather icon"
-                style="width: 100px"
+                style="width: 150px"
                 class="mx-auto d-block"
+                id="currentWeatherIcon"
               />
             </div>
           </div>
@@ -83,7 +86,7 @@
               <span class="today-background rounded-pill">Aujourd'hui</span>
             </div>
 
-            <div class="col text-center">3 km/h</div>
+            <div class="col text-center" id="wind"></div>
           </div>
         </div>
         <!-- Next day's weather -->
