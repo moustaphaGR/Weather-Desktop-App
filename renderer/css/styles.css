@@ -1,7 +1,6 @@
 body {
   overflow-x: hidden;
   min-height: 100vh;
-  background-image: url(../img/grenoble.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -14,7 +13,7 @@ body {
 
 .full-width-btn {
   width: 100%;
-  margin-left: 5%;
+  margin-left: 35px;
   padding: 0;
 }
 
@@ -39,9 +38,13 @@ body {
   border-right: 2px solid black;
 }
 
+.currentWeather > .row {
+  margin-top: 20px;
+}
+
 .currentWeatherTemp {
   font-weight: bolder;
-  font-size: 120px;
+  font-size: 92px;
 }
 
 .today-background {
