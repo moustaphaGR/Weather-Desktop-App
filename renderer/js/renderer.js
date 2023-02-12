@@ -1,4 +1,5 @@
 const API_KEY = "";
+const API_KEY_2 = "";
 const citySearchInput = document.getElementById("city-search-input");
 const searchButton = document.getElementById("search-button");
 const city = document.getElementById("city-name");
@@ -8,6 +9,17 @@ const wind = document.getElementById("wind");
 const currentWeatherIcon = document.getElementById("currentWeatherIcon");
 const weatherForecast = document.getElementById("weatherForecast");
 const body = document.querySelector("body");
+
+window.addEventListener("load", () => {
+  url = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY_2}`;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      //data.location.city
+      getWeather(data.location.city);
+    })
+    .catch((err) => console.log(err));
+});
 
 searchButton.addEventListener("click", () => {
   const cityName = citySearchInput.value;
@@ -21,16 +33,17 @@ function getWeather(cityName) {
   )
     .then((response) => response.json())
     .then((data) => {
-      displayCurrentWeather(data);
-    })
-    .catch((err) => console.error(err));
+      const timezone = data.timezone;
 
-  fetch(
-    `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}&units=metric`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      displayForecastWeather(data);
+      displayCurrentWeather(data);
+      fetch(
+        `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${API_KEY}&units=metric`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          displayForecastWeather(data, timezone);
+        })
+        .catch((err) => console.error(err));
     })
     .catch((err) => console.error(err));
 }
@@ -38,8 +51,15 @@ function getWeather(cityName) {
 function displayCurrentWeather(data) {
   body.style.backgroundImage = `url('img/${data.name}.jpg')`;
   city.innerHTML = `<h1 class="fw-bolder">${data.name}</h1>`;
-  const formattedTime = convertTime(data.timezone);
+
+  const convertedTime = convertTime(data.timezone);
+  var hours = convertedTime.getHours();
+  var minutes = convertedTime.getMinutes();
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  var formattedTime =
+    (hours % 12 || 12) + ":" + minutes + " " + (hours < 12 ? "AM" : "PM");
   time.innerHTML = `<h3>${formattedTime}</h3>`;
+
   const currentWeather = document.createElement("div");
   const classesToAdd = ["col-lg-4", "col-md-4", "col-sm-6", "currentWeather"];
   currentWeather.classList.add(...classesToAdd);
@@ -73,17 +93,18 @@ function displayCurrentWeather(data) {
   weatherForecast.appendChild(currentWeather);
 }
 
-function displayForecastWeather(data) {
-  const today = new Date();
+function displayForecastWeather(data, timezone) {
+  const today = convertTime(timezone);
   const month =
     today.getMonth() + 1 < 10
       ? "0" + (today.getMonth() + 1)
       : today.getMonth() + 1;
-  const date = today.getDate() ? "0" + today.getDate() : today.getDate();
+  const date = today.getDate() < 10 ? "0" + today.getDate() : today.getDate();
 
   const todayFormatted = `${today.getFullYear()}-${month}-${date}`;
   var avgTemp = 0;
   var counter = 0;
+  var dayOffset = 0;
 
   for (let i = 0; i < 39; i++) {
     // first we have to check if the date is different from today's date because we only want the days after
@@ -94,6 +115,11 @@ function displayForecastWeather(data) {
         avgTemp += data.list[i].main.temp;
         counter += 1;
       } else {
+        // split the date into table to retrieve the day then add dayOffset to it then join table back to string then use getDayName function to display the 4 next days
+        dayOffset += 1;
+        const getNextDay = parseInt(todayFormatted.split("-")[2]) + dayOffset;
+        const splitDate = todayFormatted.split("-");
+        splitDate[2] = getNextDay;
         avgTemp += data.list[i].main.temp;
         const forecastDiv = document.createElement("div");
         const classesToAdd = [
@@ -108,7 +134,7 @@ function displayForecastWeather(data) {
         ];
         forecastDiv.classList.add(...classesToAdd);
         forecastDiv.innerHTML = `<span class="day-background rounded-pill">${getDayName(
-          data.list[i].dt_txt
+          splitDate
         )}</span>
         <span
           ><img
@@ -132,17 +158,17 @@ function convertTime(timezone) {
   var time =
     now.getTime() + now.getTimezoneOffset() * 60000 + timezoneOffset * 1000;
   var convertedTime = new Date(time);
-  var hours = convertedTime.getHours();
-  var minutes = convertedTime.getMinutes();
-  minutes = minutes < 10 ? "0" + minutes : minutes;
+  // var hours = convertedTime.getHours();
+  // var minutes = convertedTime.getMinutes();
+  // minutes = minutes < 10 ? "0" + minutes : minutes;
 
-  var timeString =
-    (hours % 12 || 12) + ":" + minutes + " " + (hours < 12 ? "AM" : "PM");
-  return timeString;
+  // var timeString =
+  //   (hours % 12 || 12) + ":" + minutes + " " + (hours < 12 ? "AM" : "PM");
+  return convertedTime;
 }
 
 function getDayName(dateString) {
   var date = new Date(dateString);
   var days = ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."];
-  return days[date.getUTCDay()];
+  return days[date.getDay()];
 }

@@ -1,7 +1,10 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 
-const isDev = process.env.NODE_ENV !== "production";
+if (require("electron-squirrel-startup")) return;
+require("update-electron-app")();
+
+//const isDev = process.env.NODE_ENV !== "production";
 const isMac = process.platform === "darwin";
 
 function createMainWindow() {
@@ -9,16 +12,16 @@ function createMainWindow() {
   const win = new BrowserWindow({
     width: 1280,
     height: 720,
+    icon: "weatherIcon.ico",
     webPreferences: {
-      nodeIntegration: true,
       preload: path.join(__dirname, "preload.js"),
     },
   });
 
   // Show devtools automatically if in development
-  if (isDev) {
-    win.webContents.openDevTools();
-  }
+  // if (isDev) {
+  //   win.webContents.openDevTools();
+  // }
 
   // Load a URL into the window.
   win.loadFile("renderer/index.html");

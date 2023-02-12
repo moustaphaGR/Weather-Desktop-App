@@ -1,1 +1,4 @@
 node_modules
+.env
+forge.config.js
+out/

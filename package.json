@@ -2,17 +2,33 @@
   "name": "weather-app",
   "productName": "Weather App",
   "version": "1.0.0",
-  "description": "",
+  "description": "weather application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish"
   },
   "author": "Moustapha Graies",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moustaphaGR/Weather-Desktop-App.git"
+  },
   "devDependencies": {
-    "electron": "^22.2.0"
+    "@electron-forge/cli": "^6.0.5",
+    "@electron-forge/maker-deb": "^6.0.5",
+    "@electron-forge/maker-rpm": "^6.0.5",
+    "@electron-forge/maker-squirrel": "^6.0.5",
+    "@electron-forge/maker-zip": "^6.0.5",
+    "@electron-forge/publisher-github": "^6.0.5",
+    "electron": "^22.2.0",
+    "electron-packager": "^17.1.1"
   },
   "dependencies": {
-    "electron-config": "^2.0.0"
+    "dotenv": "^16.0.3",
+    "electron-squirrel-startup": "^1.0.0",
+    "update-electron-app": "^2.0.1"
   }
 }
