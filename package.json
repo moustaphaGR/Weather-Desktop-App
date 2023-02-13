@@ -1,7 +1,7 @@
 {
   "name": "weather-app",
   "productName": "Weather App",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "weather application",
   "main": "main.js",
   "scripts": {
@@ -23,12 +23,15 @@
     "@electron-forge/maker-squirrel": "^6.0.5",
     "@electron-forge/maker-zip": "^6.0.5",
     "@electron-forge/publisher-github": "^6.0.5",
-    "electron": "^22.2.0",
-    "electron-packager": "^17.1.1"
+    "electron": "^22.2.0"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
     "electron-squirrel-startup": "^1.0.0",
     "update-electron-app": "^2.0.1"
-  }
+  },
+  "runArgs": [
+    "--env-file",
+    ".env"
+  ]
 }

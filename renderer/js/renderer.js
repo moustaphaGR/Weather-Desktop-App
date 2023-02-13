@@ -1,5 +1,5 @@
-const API_KEY = "";
-const API_KEY_2 = "";
+const API_KEY = window.keys.API_KEY;
+const API_KEY_2 = window.keys.API_KEY_2;
 const citySearchInput = document.getElementById("city-search-input");
 const searchButton = document.getElementById("search-button");
 const city = document.getElementById("city-name");
@@ -104,7 +104,7 @@ function displayForecastWeather(data, timezone) {
   const todayFormatted = `${today.getFullYear()}-${month}-${date}`;
   var avgTemp = 0;
   var counter = 0;
-  var dayOffset = 0;
+  var dayOffSet = 0;
 
   for (let i = 0; i < 39; i++) {
     // first we have to check if the date is different from today's date because we only want the days after
@@ -116,8 +116,8 @@ function displayForecastWeather(data, timezone) {
         counter += 1;
       } else {
         // split the date into table to retrieve the day then add dayOffset to it then join table back to string then use getDayName function to display the 4 next days
-        dayOffset += 1;
-        const getNextDay = parseInt(todayFormatted.split("-")[2]) + dayOffset;
+        dayOffSet += 1;
+        const getNextDay = parseInt(todayFormatted.split("-")[2]) + dayOffSet;
         const splitDate = todayFormatted.split("-");
         splitDate[2] = getNextDay;
         avgTemp += data.list[i].main.temp;

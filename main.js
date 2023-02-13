@@ -1,6 +1,8 @@
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 
+require("dotenv").config();
+
 if (require("electron-squirrel-startup")) return;
 require("update-electron-app")();
 

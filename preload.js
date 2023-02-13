@@ -1,3 +1,5 @@
+const { contextBridge } = require("electron");
+
 window.addEventListener("DOMContentLoaded", () => {
   const replaceText = (selector, text) => {
     const element = document.getElementById(selector);
@@ -8,3 +10,9 @@ window.addEventListener("DOMContentLoaded", () => {
     replaceText(`${dependency}-version`, process.versions[dependency]);
   }
 });
+
+contextBridge.exposeInMainWorld("keys", {
+  API_KEY: process.env.API_KEY,
+  API_KEY_2: process.env.API_KEY_2,
+});
+// console.log(process.env);
